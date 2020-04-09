@@ -1,0 +1,12 @@
+body {
+  //full screen responsive bg image
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  //clear out default spacing across browsers
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

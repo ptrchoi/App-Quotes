@@ -1,0 +1,40 @@
+.textWrapper {
+  display: none;
+  height: $quote-box-height;
+  padding: 20px;
+  position: absolute;
+  width: $quote-box-width;
+}
+blockquote {
+  color: $opaque-white;
+  font-family: Georgia, serif;
+  font-size: $quote-font-size;
+  font-style: italic;
+  text-shadow: 4px 4px 8px black;
+  margin: 0.25rem 0;
+  padding: 0.35rem 40px;
+  position: relative;
+}
+blockquote:before {
+  color: $quotation-symbols;
+  content: "\201C";
+  display: block;
+  font-size: $quote-symbol-font-size;
+  left: $quote-symbol-offset;
+  padding-left: 10px;
+  position: absolute;
+  top: $quote-symbol-offset;
+}
+cite {
+  color: $opaque-white;
+  display: block;
+  font-size: $author-font-size;
+  font-style: normal;
+  margin-left: $author-left-offset;
+  margin-top: 5px;
+  text-shadow: 3px 3px 5px black;
+}
+cite:before {
+  color: $quotation-symbols;
+  content: "\2014 \2009";
+}
