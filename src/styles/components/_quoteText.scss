@@ -7,31 +7,34 @@
 	z-index: $quote-layer;
 }
 blockquote {
+	@include fluid-type(font-size, 300px, 1200px, 8px, 40px);
+
 	color: $opaque-white;
 	font-family: Georgia, serif;
-	font-size: $quote-font-size;
 	font-style: italic;
 	text-shadow: 4px 4px 8px black;
 	margin: 0.25rem 0;
-	padding: 0.35rem 40px;
+	padding: 0.35rem 2.3rem;
 	position: relative;
 }
 blockquote:before {
+	@include fluid-type(font-size, 300px, 1200px, 32px, 96px);
+	@include fluid-type(left, 300px, 1200px, 0px, -16px);
+	@include fluid-type(top, 300px, 1200px, -4px, -32px);
+	@include fluid-type(padding-left, 300px, 1200px, 18px, 0px);
+
 	color: $quotation-symbols;
 	content: "\201C";
 	display: block;
-	font-size: $quote-symbol-font-size;
-	left: $quote-symbol-offset;
-	padding-left: 10px;
 	position: absolute;
-	top: $quote-symbol-offset;
 }
 cite {
+	@include fluid-type(font-size, 300px, 1200px, 6px, 28px);
+
 	color: $opaque-white;
 	display: block;
-	font-size: $author-font-size;
 	font-style: normal;
-	margin-left: $author-left-offset;
+	margin-left: 50%;
 	margin-top: 5px;
 	text-shadow: 3px 3px 5px black;
 }
