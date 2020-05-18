@@ -1,39 +1,42 @@
 .buttonsContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: $buttons-top-margin;
+	display: flex;
+	justify-content: center;
+	margin-top: $buttons-top-margin;
+	position: absolute;
+	width: 100%;
+	z-index: $button-layer;
 }
 .buttonWrapper {
-  align-self: center;
-  margin: 10px 20px;
+	align-self: center;
+	margin: 10px 20px;
 }
 .appButton {
-  background-color: $transparent-gray;
-  border: solid 2px $mid-white;
-  border-radius: 10px;
-  color: $transparent-white;
-  font-size: $icon-font-size;
-  height: $button-size;
-  outline: none;
-  text-align: center;
-  transition: ease-in-out $transparency-transition;
-  width: $button-size;
-  &:hover {
-    background-color: $opaque-gray;
-    border: solid 1px $opaque-white;
-    color: $opaque-white;
-    cursor: pointer;
-    transition: ease-in-out $transparency-transition;
-  }
+	background-color: $transparent-gray;
+	border: solid 2px $mid-white;
+	border-radius: 10px;
+	color: $transparent-white;
+	font-size: $icon-font-size;
+	height: $button-size;
+	outline: none;
+	text-align: center;
+	transition: ease-in-out $transparency-transition;
+	width: $button-size;
+	&:hover {
+		background-color: $opaque-gray;
+		border: solid 1px $opaque-white;
+		color: $opaque-white;
+		cursor: pointer;
+		transition: ease-in-out $transparency-transition;
+	}
 }
 .selectedButton {
-  background-color: $transparent-white;
-  border: solid 2px $opaque-blue;
-  color: $opaque-blue;
+	background-color: $transparent-white;
+	border: solid 2px $opaque-blue;
+	color: $opaque-blue;
 
-  &:hover {
-    background-color: $opaque-white;
-    border: solid 2px $opaque-blue;
-    color: $opaque-blue;
-  }
+	&:hover {
+		background-color: $opaque-white;
+		border: solid 2px $opaque-blue;
+		color: $opaque-blue;
+	}
 }
