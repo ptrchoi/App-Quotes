@@ -1,7 +1,7 @@
 .buttonsContainer {
 	display: flex;
 	justify-content: center;
-	margin-top: $buttons-top-margin;
+	margin-top: 85vh;
 	position: absolute;
 	width: 100%;
 	z-index: $button-layer;
@@ -11,16 +11,17 @@
 	margin: 10px 20px;
 }
 .appButton {
+	@include fluid-type(font-size, 300px, 1200px, .9rem, 1.5rem);
+	@include fluid-type(height, 300px, 1200px, 25px, 40px);
+	@include fluid-type(width, 300px, 1200px, 25px, 40px);
+	@include fluid-type(border-radius, 300px, 1200px, 6px, 10px);
+
 	background-color: $transparent-gray;
 	border: solid 2px $mid-white;
-	border-radius: 10px;
 	color: $transparent-white;
-	font-size: $icon-font-size;
-	height: $button-size;
 	outline: none;
 	text-align: center;
 	transition: ease-in-out $transparency-transition;
-	width: $button-size;
 	&:hover {
 		background-color: $opaque-gray;
 		border: solid 1px $opaque-white;
@@ -38,5 +39,11 @@
 		background-color: $opaque-white;
 		border: solid 2px $opaque-blue;
 		color: $opaque-blue;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	.buttonsContainer {
+		margin-top: 80vh;
 	}
 }
