@@ -83,15 +83,16 @@ class App extends React.Component {
 
 			let positionObj = this.getRandomQuotePosition();
 
-			$('.textWrapper').css({ left: positionObj.x, top: positionObj.y });
+			// $('.textWrapper').css({ left: positionObj.x, top: positionObj.y });
+			$('.textWrapper').css({ right: positionObj.x, top: positionObj.y });
 			$('.textWrapper').fadeIn(QUOTE_FADE_IN_TIME);
 		});
 	}
 	getRandomQuotePosition() {
-		// % of width
+		// % offset width from right edge
 		const x_min = 3;
 		const x_max = 12;
-		// % of height
+		// % offset height from top edge
 		const y_min = 10;
 		const y_max = 40;
 
