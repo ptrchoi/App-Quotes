@@ -10,7 +10,6 @@ const INTERVAL_TIME = 10000; //ms
 const QUOTE_FADE_IN_TIME = 3000; //ms
 const QUOTE_FADE_OUT_TIME = 1500; //ms
 const IMAGE_TRANSITION_TIME = 0.8; //s
-const UNSPLASH_URL = 'https://source.unsplash.com/random/featured/?weather/?sig=';
 
 class App extends React.Component {
 	constructor(props) {
@@ -20,9 +19,11 @@ class App extends React.Component {
 			quote: '',
 			author: '',
 			imageUrl: '',
-			interval: {}
+			theme: 'weather+scenic', // Default value to match dropdown list in QuoteButtons component
+			interval: null
 		};
 
+		this.resetApp = this.resetApp.bind(this);
 		this.startInterval = this.startInterval.bind(this);
 		this.getNewQuote = this.getNewQuote.bind(this);
 		this.handleQuoteData = this.handleQuoteData.bind(this);
@@ -30,13 +31,20 @@ class App extends React.Component {
 		this.getRandomQuotePosition = this.getRandomQuotePosition.bind(this);
 		this.preloadImage = this.preloadImage.bind(this);
 		this.displayImage = this.displayImage.bind(this);
+		this.handleThemeChange = this.handleThemeChange.bind(this);
 	}
 	componentDidMount() {
-		//Load an initial quote/background
+		this.resetApp();
+	}
+	resetApp() {
+		// Load an initial quote/background
 		this.getNewQuote();
 		this.preloadImage();
 
-		//Start the interval timer
+		// If not the first run, clear out the previous interval
+		if (this.state.interval !== null) clearInterval(this.state.interval);
+
+		// Start the interval timer
 		this.startInterval();
 	}
 	startInterval() {
@@ -83,7 +91,6 @@ class App extends React.Component {
 
 			let positionObj = this.getRandomQuotePosition();
 
-			// $('.textWrapper').css({ left: positionObj.x, top: positionObj.y });
 			$('.textWrapper').css({ right: positionObj.x, top: positionObj.y });
 			$('.textWrapper').fadeIn(QUOTE_FADE_IN_TIME);
 		});
@@ -105,7 +112,13 @@ class App extends React.Component {
 		};
 	}
 	preloadImage() {
-		let url = UNSPLASH_URL + Math.floor(Math.random() * 1000); //add a random signature - known bug in the unsplash docs
+		// Add selected theme variable to url
+		// and a random signature (for known bug in the unsplash docs)
+		let url =
+			'https://source.unsplash.com/random/featured/?' +
+			this.state.theme +
+			'/?sig=' +
+			Math.floor(Math.random() * 1000);
 
 		let imageProperties = {
 			background: `url(${url})`,
@@ -137,13 +150,19 @@ class App extends React.Component {
 		let bgEl = document.getElementsByClassName('panel-1')[0];
 		Object.assign(bgEl.style, imageProperties);
 	}
+	handleThemeChange(newTheme) {
+		this.setState({
+			theme: newTheme
+		});
+		this.resetApp();
+	}
 	render() {
 		return (
 			<div id="quote-box" className="container">
 				<div className="panel-1 bg-img-panel" />
 				<div className="panel-2 bg-img-panel" />
 				<QuoteText text={this.state.quote} name={this.state.author} />
-				<QuoteButtons />
+				<QuoteButtons onThemeChange={this.handleThemeChange} />
 			</div>
 		);
 	}

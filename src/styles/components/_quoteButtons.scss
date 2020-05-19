@@ -41,6 +41,16 @@
 		color: $opaque-blue;
 	}
 }
+#themes {
+	@include fluid-type(font-size, 300px, 1200px, .6rem, 1.2rem);
+	@include fluid-type(height, 300px, 1200px, 25px, 40px);
+	@include fluid-type(width, 300px, 1200px, 102px, 180px);
+	@include fluid-type(border-radius, 300px, 1200px, 6px, 10px);
+
+	background-color: rgba(160, 160, 160, $high-transparency);
+	border: solid 1px $opaque-white;
+	color: $opaque-white;
+}
 
 @media screen and (orientation: landscape) {
 	.buttonsContainer {

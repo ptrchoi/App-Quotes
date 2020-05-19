@@ -3,58 +3,18 @@ import $ from 'jquery';
 
 import InfoModal from './InfoModal';
 
-//Constants
-// const INTERVAL_TIME = 10000; //ms
-
 class QuoteButtons extends React.Component {
 	constructor(props) {
 		super(props);
 
-		// this.state = {
-		// 	autoplay: false,
-		// 	interval: {},
-		// 	showInfo: false
-		// };
 		this.state = {
 			showInfo: false
 		};
 
-		// this.getNewQuote = this.getNewQuote.bind(this);
-		// this.autoplay = this.autoplay.bind(this);
 		this.showInfo = this.showInfo.bind(this);
 		this.hideInfo = this.hideInfo.bind(this);
-		// this.handleQuoteClick = this.handleQuoteClick.bind(this);
-		// this.handleAutoplayClick = this.handleAutoplayClick.bind(this);
+		this.themeChange = this.themeChange.bind(this);
 	}
-	// componentDidMount() {
-	// 	//Load an initial quote/background
-	// 	this.getNewQuote();
-
-	// 	//Start the autoplay loop
-	// 	// $('#auto-play').click();
-	// 	this.autoplay();
-	// }
-	// getNewQuote() {
-	// 	let url = 'https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?';
-
-	// 	$.getJSON(
-	// 		url,
-	// 		(data) => {
-	// 			this.props.onClick({
-	// 				quote: data.quoteText,
-	// 				author: data.quoteAuthor
-	// 			});
-	// 		},
-	// 		'jsonp'
-	// 	);
-	// }
-	// autoplay() {
-	// 	this.setState({
-	// 		interval: window.setInterval(() => {
-	// 			this.getNewQuote();
-	// 		}, INTERVAL_TIME)
-	// 	});
-	// }
 	showInfo() {
 		this.setState({
 			showInfo: true
@@ -65,52 +25,38 @@ class QuoteButtons extends React.Component {
 			showInfo: false
 		});
 	}
-	// handleQuoteClick(e) {
-	// 	e.preventDefault();
-
-	// 	//If switching from autoplay, clear autoplay
-	// 	if (this.state.autoplay === true) {
-	// 		$('#new-quote').addClass('selectedButton');
-	// 		$('#auto-play').removeClass('selectedButton');
-
-	// 		clearInterval(this.state.interval);
-
-	// 		this.setState({
-	// 			autoplay: false
-	// 		});
-	// 	}
-	// 	$('.textWrapper').stop();
-	// 	this.getNewQuote();
-	// }
-	// handleAutoplayClick(e) {
-	// 	e.preventDefault();
-
-	// 	//If switching from manual mode, set autoplay
-	// 	if (this.state.autoplay === false) {
-	// 		$('#auto-play').addClass('selectedButton');
-	// 		$('#new-quote').removeClass('selectedButton');
-
-	// 		this.setState({
-	// 			autoplay: true
-	// 		});
-	// 		$('.textWrapper').stop();
-	// 		this.getNewQuote();
-	// 		this.autoplay();
-	// 	}
-	// }
-	render() {
+	themeChange() {
+		this.props.onThemeChange(document.getElementById('themes').value);
+	}
+	render(props) {
 		return (
 			<div className="buttonsContainer">
 				{/* <div className="buttonWrapper">
-					<button id="new-quote" className="appButton" onClick={this.handleQuoteClick}>
-						<i className="fas fa-step-forward" />
-					</button>
-				</div>
-				<div className="buttonWrapper">
 					<button id="auto-play" className="appButton selectedButton" onClick={this.handleAutoplayClick}>
 						<i className="fas fa-sync-alt" />
 					</button>
 				</div> */}
+				<div className="buttonWrapper">
+					<select name="themes" id="themes" onChange={this.themeChange}>
+						<option selected disabled>
+							Unsplash Themes
+						</option>
+						<option value="weather+scenic">Weather</option>
+						<option value="beach+tropical">Beaches</option>
+						<option value="nature">Nature</option>
+						<option value="Christian">Spiritual</option>
+						<option value="travel">Travel</option>
+						<option value="architecture">Architecture</option>
+						<option value="textures">Textures</option>
+						<option value="people">People</option>
+						<option value="animals">Animals</option>
+						<option value="guitar">Guitars</option>
+						<option value="music">Music</option>
+						<option value="wallpaper">Wallpapers</option>
+						<option value="tiltshift">Tiltshift</option>
+						<option value="experimental">Experimental</option>
+					</select>
+				</div>
 				<div className="buttonWrapper">
 					<a id="tweet-quote" href="https://twitter.com/intent/tweet" target="_blank">
 						<button className="appButton ">
