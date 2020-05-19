@@ -1,13 +1,16 @@
 .textWrapper {
 	display: none;
-	height: $quote-box-height;
 	padding: 20px;
 	position: absolute;
-	width: $quote-box-width;
 	z-index: $quote-layer;
+
+	height: 20vw;
+	width: 90vw;
+	max-height: 225px;
+	max-width: 900px;
 }
 blockquote {
-	@include fluid-type(font-size, 300px, 1200px, 8px, 40px);
+	@include fluid-type(font-size, 300px, 1200px, 12px, 36px);
 
 	color: $opaque-white;
 	font-family: Georgia, serif;
@@ -29,16 +32,30 @@ blockquote:before {
 	position: absolute;
 }
 cite {
-	@include fluid-type(font-size, 300px, 1200px, 6px, 28px);
+	@include fluid-type(font-size, 300px, 1200px, 10px, 28px);
 
 	color: $opaque-white;
 	display: block;
 	font-style: normal;
-	margin-left: 50%;
+	margin-left: 45%;
 	margin-top: 5px;
 	text-shadow: 3px 3px 5px black;
 }
 cite:before {
 	color: $quotation-symbols;
 	content: "\2014 \2009";
+}
+
+@media screen and (orientation: landscape) {
+	.textWrapper {
+		padding: 2px;
+		height: 15vw;
+		width: 80vw;
+	}
+	blockquote {
+		@include fluid-type(font-size, 300px, 1200px, 10px, 24px);
+	}
+	cite {
+		@include fluid-type(font-size, 300px, 1200px, 8px, 22px);
+	}
 }

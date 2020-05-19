@@ -7,14 +7,10 @@ import QuoteButtons from './QuoteButtons';
 
 //Constants
 const INTERVAL_TIME = 10000; //ms
-const QUOTE_FADE_IN_TIME = 5000; //ms
-const QUOTE_FADE_OUT_TIME = 2000; //ms
+const QUOTE_FADE_IN_TIME = 3000; //ms
+const QUOTE_FADE_OUT_TIME = 1500; //ms
 const IMAGE_TRANSITION_TIME = 0.8; //s
 const UNSPLASH_URL = 'https://source.unsplash.com/random/featured/?weather/?sig=';
-const Y_MIN = 10; //vh
-const Y_MAX = 50; //vh
-const X_MIN = 15; //vw
-const X_MAX = 20; //vw
 
 class App extends React.Component {
 	constructor(props) {
@@ -31,6 +27,7 @@ class App extends React.Component {
 		this.getNewQuote = this.getNewQuote.bind(this);
 		this.handleQuoteData = this.handleQuoteData.bind(this);
 		this.displayQuote = this.displayQuote.bind(this);
+		this.getRandomQuotePosition = this.getRandomQuotePosition.bind(this);
 		this.preloadImage = this.preloadImage.bind(this);
 		this.displayImage = this.displayImage.bind(this);
 	}
@@ -67,8 +64,8 @@ class App extends React.Component {
 	handleQuoteData(newQuote) {
 		let author = `${newQuote.author}`;
 
-		// Handle unknown author data
-		if (author.length < 1) {
+		// Clean up bad author data
+		if (author.length < 1 || author === 'Donald Trump' || author === 'Donald Trump ') {
 			author = 'unknown author';
 		}
 
@@ -84,13 +81,27 @@ class App extends React.Component {
 				author: `${author}`
 			});
 
-			//Generate a random quote location within x & y targets
-			let xStr = (Math.floor(Math.random() * X_MAX) + X_MIN).toString() + 'vw';
-			let yStr = (Math.floor(Math.random() * Y_MAX) + Y_MIN).toString() + 'vh';
+			let positionObj = this.getRandomQuotePosition();
 
-			$('.textWrapper').css({ left: xStr, top: yStr });
+			$('.textWrapper').css({ left: positionObj.x, top: positionObj.y });
 			$('.textWrapper').fadeIn(QUOTE_FADE_IN_TIME);
 		});
+	}
+	getRandomQuotePosition() {
+		// % of width
+		const x_min = 3;
+		const x_max = 12;
+		// % of height
+		const y_min = 10;
+		const y_max = 40;
+
+		let x = (Math.floor(Math.random() * x_max) + x_min).toString() + '%';
+		let y = (Math.floor(Math.random() * y_max) + y_min).toString() + '%';
+
+		return {
+			x: x,
+			y: y
+		};
 	}
 	preloadImage() {
 		let url = UNSPLASH_URL + Math.floor(Math.random() * 1000); //add a random signature - known bug in the unsplash docs
