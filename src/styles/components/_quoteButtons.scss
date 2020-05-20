@@ -42,9 +42,9 @@
 	}
 }
 #themes {
-	@include fluid-type(font-size, 300px, 1200px, 1rem, 1.2rem);
+	@include fluid-type(font-size, 300px, 1200px, 10px, 18px);
 	@include fluid-type(height, 300px, 1200px, 25px, 40px);
-	@include fluid-type(width, 300px, 1200px, 140px, 180px);
+	@include fluid-type(width, 300px, 1200px, 120px, 180px);
 	@include fluid-type(border-radius, 300px, 1200px, 6px, 10px);
 
 	background-color: rgba(160, 160, 160, $high-transparency);
