@@ -15,7 +15,8 @@ blockquote {
 	color: $opaque-white;
 	font-family: Georgia, serif;
 	font-style: italic;
-	text-shadow: 2px 2px 4px rgb(97, 97, 97), 3px 3px 4px black;
+	text-shadow: 2px 2px 4px rgb(97, 97, 97), 2px 2px 4px black, 2px 2px 4px black, 2px 2px 4px black, 2px 2px 4px black,
+		2px 2px 8px rgb(97, 97, 97);
 	margin: 0.25rem 0;
 	padding: 0.35rem 2.3rem;
 	position: relative;
@@ -39,7 +40,9 @@ cite {
 	font-style: normal;
 	margin-left: 45%;
 	margin-top: 5px;
-	text-shadow: 3px 3px 5px black;
+	text-shadow: 2px 2px 4px rgb(97, 97, 97), 2px 2px 4px black, 2px 2px 4px black, 2px 2px 4px black, 2px 2px 4px black;
+
+	// text-shadow: 3px 3px 5px black;
 }
 cite:before {
 	color: $quotation-symbols;

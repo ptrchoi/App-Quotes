@@ -17,8 +17,8 @@
 	@include fluid-type(border-radius, 300px, 1200px, 6px, 10px);
 
 	background-color: $transparent-gray;
-	border: solid 2px $mid-white;
-	color: $transparent-white;
+	border: solid 2px $opaque-white;
+	color: $opaque-white;
 	outline: none;
 	text-align: center;
 	transition: ease-in-out $transparency-transition;
@@ -41,20 +41,18 @@
 		color: $opaque-blue;
 	}
 }
-#playBtn {
-	background-color: rgba(160, 160, 160, $high-transparency);
-	border: solid 1px $opaque-white;
-	color: $opaque-white;
-}
 #themes {
-	@include fluid-type(font-size, 300px, 1200px, .6rem, 1.2rem);
+	@include fluid-type(font-size, 300px, 1200px, 1rem, 1.2rem);
 	@include fluid-type(height, 300px, 1200px, 25px, 40px);
-	@include fluid-type(width, 300px, 1200px, 102px, 180px);
+	@include fluid-type(width, 300px, 1200px, 140px, 180px);
 	@include fluid-type(border-radius, 300px, 1200px, 6px, 10px);
 
 	background-color: rgba(160, 160, 160, $high-transparency);
-	border: solid 1px $opaque-white;
-	color: $opaque-white;
+	background-color: $transparent-gray;
+	border: solid 2px $opaque-white;
+	color: white;
+	font-weight: bolder;
+	text-shadow: 1px 1px 3px black;
 }
 
 @media screen and (orientation: landscape) {

@@ -31,11 +31,9 @@ class QuoteButtons extends React.Component {
 	}
 	playPause(e, paused) {
 		if (paused) {
-			$('#pausePlayIcon').removeClass('fa-play');
-			$('#pausePlayIcon').addClass('fa-pause');
+			$('#playBtn').removeClass('selectedButton');
 		} else {
-			$('#pausePlayIcon').removeClass('fa-pause');
-			$('#pausePlayIcon').addClass('fa-play');
+			$('#playBtn').addClass('selectedButton');
 		}
 
 		this.props.onPlayPause(!paused);
@@ -60,7 +58,6 @@ class QuoteButtons extends React.Component {
 						<option value="guitar">Guitars</option>
 						<option value="music">Music</option>
 						<option value="wallpaper">Wallpapers</option>
-						<option value="tiltshift">Tiltshift</option>
 						<option value="experimental">Experimental</option>
 						<option value="editorial">Unsplash</option>
 					</select>
@@ -83,12 +80,12 @@ class QuoteButtons extends React.Component {
 						</button>
 					</a>
 				</div>
-				<div className="buttonWrapper">
+				{/* <div className="buttonWrapper">
 					<button id="app-info" className="appButton" onClick={this.showInfo}>
 						<i className="fas fa-info" />
 					</button>
 				</div>
-				<InfoModal show={this.state.showInfo} handleClose={this.hideInfo} />
+				<InfoModal show={this.state.showInfo} handleClose={this.hideInfo} /> */}
 			</div>
 		);
 	}
