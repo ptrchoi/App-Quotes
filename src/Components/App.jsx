@@ -6,7 +6,7 @@ import QuoteText from './QuoteText';
 import QuoteButtons from './QuoteButtons';
 
 //Constants
-const INTERVAL_TIME = 10000; //ms
+const DISPLAY_TIME = 10; //s
 const QUOTE_FADE_IN_TIME = 3000; //ms
 const QUOTE_FADE_OUT_TIME = 1500; //ms
 const IMAGE_TRANSITION_TIME = 0.8; //s
@@ -20,7 +20,10 @@ class App extends React.Component {
 			author: '',
 			imageUrl: '',
 			theme: 'weather+scenic', // Default value to match dropdown list in QuoteButtons component
-			interval: null
+			interval: null,
+			displayTimer: 0, // In secs
+			paused: false,
+			pausedReset: false
 		};
 
 		this.resetApp = this.resetApp.bind(this);
@@ -32,6 +35,7 @@ class App extends React.Component {
 		this.preloadImage = this.preloadImage.bind(this);
 		this.displayImage = this.displayImage.bind(this);
 		this.handleThemeChange = this.handleThemeChange.bind(this);
+		this.handlePlayPause = this.handlePlayPause.bind(this);
 	}
 	componentDidMount() {
 		this.resetApp();
@@ -44,15 +48,37 @@ class App extends React.Component {
 		// If not the first run, clear out the previous interval
 		if (this.state.interval !== null) clearInterval(this.state.interval);
 
+		// Reset the display timer
+		this.setState({
+			displayTimer: 0
+		});
+
 		// Start the interval timer
 		this.startInterval();
 	}
 	startInterval() {
-		this.setState({
-			interval: window.setInterval(() => {
+		// Set interval (1s) and start next quote cycle when limit reached
+		let interval = window.setInterval(() => {
+			let { displayTimer, paused } = this.state;
+
+			// Increase the timer count (every 1s (1000ms))
+			if (!paused) displayTimer++;
+
+			// When timer reaches limit, get next quote & image, reset timer
+			if (displayTimer > DISPLAY_TIME) {
 				this.getNewQuote();
 				this.preloadImage();
-			}, INTERVAL_TIME)
+				displayTimer = 0;
+			}
+
+			// Update timer
+			this.setState({
+				displayTimer: displayTimer
+			});
+		}, 1000);
+
+		this.setState({
+			interval: interval
 		});
 	}
 	getNewQuote() {
@@ -80,7 +106,8 @@ class App extends React.Component {
 		this.displayQuote(newQuote.quote, author);
 	}
 	displayQuote(quote, author) {
-		this.preloadImage(); // Preload image into back panel for seamless transition
+		// Preload image into back panel for seamless transition
+		this.preloadImage();
 
 		$('.textWrapper').fadeOut(QUOTE_FADE_OUT_TIME, () => {
 			this.displayImage();
@@ -151,10 +178,32 @@ class App extends React.Component {
 		Object.assign(bgEl.style, imageProperties);
 	}
 	handleThemeChange(newTheme) {
+		let { paused, pausedReset } = this.state;
+
+		// Check if paused, if so reset needs to be called after unpaused
+		if (paused) pausedReset = true;
+
 		this.setState({
-			theme: newTheme
+			theme: newTheme,
+			pausedReset: pausedReset
 		});
-		this.resetApp();
+
+		// If not paused, reset now
+		if (!pausedReset) this.resetApp();
+	}
+	handlePlayPause(pause) {
+		let { pausedReset } = this.state;
+
+		// If a reset was already paused, and user unpaused - do the reset now and clear the pausedReset state
+		if (!pause && pausedReset) {
+			this.resetApp();
+			pausedReset = false;
+		}
+
+		this.setState({
+			paused: pause,
+			pausedReset: pausedReset
+		});
 	}
 	render() {
 		return (
@@ -162,7 +211,11 @@ class App extends React.Component {
 				<div className="panel-1 bg-img-panel" />
 				<div className="panel-2 bg-img-panel" />
 				<QuoteText text={this.state.quote} name={this.state.author} />
-				<QuoteButtons onThemeChange={this.handleThemeChange} />
+				<QuoteButtons
+					onThemeChange={this.handleThemeChange}
+					paused={this.state.paused}
+					onPlayPause={this.handlePlayPause}
+				/>
 			</div>
 		);
 	}

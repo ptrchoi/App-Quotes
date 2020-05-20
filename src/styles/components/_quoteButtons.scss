@@ -41,6 +41,11 @@
 		color: $opaque-blue;
 	}
 }
+#playBtn {
+	background-color: rgba(160, 160, 160, $high-transparency);
+	border: solid 1px $opaque-white;
+	color: $opaque-white;
+}
 #themes {
 	@include fluid-type(font-size, 300px, 1200px, .6rem, 1.2rem);
 	@include fluid-type(height, 300px, 1200px, 25px, 40px);

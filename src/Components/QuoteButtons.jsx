@@ -14,6 +14,7 @@ class QuoteButtons extends React.Component {
 		this.showInfo = this.showInfo.bind(this);
 		this.hideInfo = this.hideInfo.bind(this);
 		this.themeChange = this.themeChange.bind(this);
+		this.playPause = this.playPause.bind(this);
 	}
 	showInfo() {
 		this.setState({
@@ -28,17 +29,23 @@ class QuoteButtons extends React.Component {
 	themeChange() {
 		this.props.onThemeChange(document.getElementById('themes').value);
 	}
+	playPause(e, paused) {
+		if (paused) {
+			$('#pausePlayIcon').removeClass('fa-play');
+			$('#pausePlayIcon').addClass('fa-pause');
+		} else {
+			$('#pausePlayIcon').removeClass('fa-pause');
+			$('#pausePlayIcon').addClass('fa-play');
+		}
+
+		this.props.onPlayPause(!paused);
+	}
 	render(props) {
 		return (
 			<div className="buttonsContainer">
-				{/* <div className="buttonWrapper">
-					<button id="auto-play" className="appButton selectedButton" onClick={this.handleAutoplayClick}>
-						<i className="fas fa-sync-alt" />
-					</button>
-				</div> */}
 				<div className="buttonWrapper">
-					<select name="themes" id="themes" onChange={this.themeChange}>
-						<option selected disabled>
+					<select name="themes" id="themes" onChange={this.themeChange} defaultValue={'heading'}>
+						<option value="heading" disabled>
 							Unsplash Themes
 						</option>
 						<option value="weather+scenic">Weather</option>
@@ -55,7 +62,19 @@ class QuoteButtons extends React.Component {
 						<option value="wallpaper">Wallpapers</option>
 						<option value="tiltshift">Tiltshift</option>
 						<option value="experimental">Experimental</option>
+						<option value="editorial">Unsplash</option>
 					</select>
+				</div>
+				<div className="buttonWrapper">
+					<button
+						id="playBtn"
+						className="appButton"
+						onClick={(e) => {
+							this.playPause(e, this.props.paused);
+						}}
+					>
+						<i id="pausePlayIcon" class="fas fa-pause" />
+					</button>
 				</div>
 				<div className="buttonWrapper">
 					<a id="tweet-quote" href="https://twitter.com/intent/tweet" target="_blank">
