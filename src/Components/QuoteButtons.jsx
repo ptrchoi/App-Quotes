@@ -8,7 +8,8 @@ class QuoteButtons extends React.Component {
 		super(props);
 
 		this.state = {
-			showInfo: false
+			showInfo: false,
+			modalPaused: false
 		};
 
 		this.showInfo = this.showInfo.bind(this);
@@ -17,13 +18,28 @@ class QuoteButtons extends React.Component {
 		this.playPause = this.playPause.bind(this);
 	}
 	showInfo() {
+		let { paused, modalPaused } = this.props;
+		// Pause on info modal if not already paused. Update state - infoModal triggered pause to be able to unpause.
+		if (paused === false) {
+			$('#playBtn').click();
+			modalPaused = true;
+		}
 		this.setState({
-			showInfo: true
+			showInfo: true,
+			modalPaused: modalPaused
 		});
 	}
 	hideInfo() {
+		let { modalPaused } = this.state;
+
+		// Check if infoModal triggered pause, if so unpause.
+		if (modalPaused) {
+			$('#playBtn').click();
+			modalPaused = false;
+		}
 		this.setState({
-			showInfo: false
+			showInfo: false,
+			modalPaused: modalPaused
 		});
 	}
 	themeChange() {
@@ -42,7 +58,13 @@ class QuoteButtons extends React.Component {
 		return (
 			<div className="buttonsContainer">
 				<div className="buttonWrapper">
-					<select name="themes" id="themes" onChange={this.themeChange} defaultValue={'heading'}>
+					<select
+						name="themes"
+						id="themes"
+						className="appButton"
+						onChange={this.themeChange}
+						defaultValue={'heading'}
+					>
 						<option value="heading" disabled>
 							Unsplash Themes
 						</option>
@@ -80,12 +102,12 @@ class QuoteButtons extends React.Component {
 						</button>
 					</a>
 				</div>
-				{/* <div className="buttonWrapper">
+				<div className="buttonWrapper">
 					<button id="app-info" className="appButton" onClick={this.showInfo}>
 						<i className="fas fa-info" />
 					</button>
 				</div>
-				<InfoModal show={this.state.showInfo} handleClose={this.hideInfo} /> */}
+				<InfoModal show={this.state.showInfo} handleClose={this.hideInfo} />
 			</div>
 		);
 	}

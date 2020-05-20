@@ -7,14 +7,15 @@
 	z-index: $button-layer;
 }
 .buttonWrapper {
-	align-self: center;
-	margin: 10px 20px;
+	@include fluid-type(margin-left, 300px, 1200px, 6px, 24px);
+	@include fluid-type(margin-right, 300px, 1200px, 6px, 24px);
 }
 .appButton {
-	@include fluid-type(font-size, 300px, 1200px, .9rem, 1.5rem);
-	@include fluid-type(height, 300px, 1200px, 25px, 40px);
-	@include fluid-type(width, 300px, 1200px, 25px, 40px);
+	@include fluid-type(font-size, 300px, 1200px, 8px, 24px);
+	@include fluid-type(height, 300px, 1200px, 20px, 50px);
+	@include fluid-type(width, 300px, 1200px, 20px, 50px);
 	@include fluid-type(border-radius, 300px, 1200px, 6px, 10px);
+	max-width: 60px;
 
 	background-color: $transparent-gray;
 	border: solid 2px $opaque-white;
@@ -42,15 +43,9 @@
 	}
 }
 #themes {
-	@include fluid-type(font-size, 300px, 1200px, 10px, 18px);
-	@include fluid-type(height, 300px, 1200px, 25px, 40px);
-	@include fluid-type(width, 300px, 1200px, 120px, 180px);
-	@include fluid-type(border-radius, 300px, 1200px, 6px, 10px);
+	@include fluid-type(width, 300px, 1200px, 105px, 225px);
+	max-width: 320px;
 
-	background-color: rgba(160, 160, 160, $high-transparency);
-	background-color: $transparent-gray;
-	border: solid 2px $opaque-white;
-	color: white;
 	font-weight: bolder;
 	text-shadow: 1px 1px 3px black;
 }

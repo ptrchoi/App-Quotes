@@ -2,6 +2,10 @@
 ------------------------------------ */
 //Fluid-type Mixin based on https://github.com/robertraichle/fluid-type-mixin
 //$min-vw & $max-vw are width values (in pixels), not actual vw unit values - essentially break points
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
 @mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
 	@each $property in $properties {
 		#{$property}: $min-value;
@@ -22,9 +26,6 @@
 			#{$property}: $max-value;
 		}
 	}
-}
-@function strip-unit($value) {
-	@return $value / ($value * 0 + 1);
 }
 
 /* Styling

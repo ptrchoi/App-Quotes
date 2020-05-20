@@ -1,50 +1,60 @@
 .modal-overlay {
-  background: rgba(0, 0, 0, 0.6);
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 .modal-window {
-  background: white;
-  border-radius: 3px;
-  border: none;
-  color: rgb(46, 46, 46);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
-  height: auto;
-  left: 50%;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(300px + 20vw);
-  h1 {
-    background-color: blue;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    color: white;
-    height: 30px;
-    margin: 0;
-    padding: 14px 16px;
-  }
-  div {
-    padding: 0 $content-padding-x 24px $content-padding-x;
-  }
+	@include fluid-type(border-radius, 300px, 1200px, 6px, 10px);
+	@include fluid-type(font-size, 300px, 1200px, 8px, 18px);
+	@include fluid-type(width, 300px, 1200px, 250px, 1000px);
+	max-width: 1000px;
+
+	background-color: $transparent-gray;
+	border: solid 2px $opaque-white;
+	color: $opaque-white;
+	font-family: Arial, Helvetica, sans-serif;
+	left: 50%;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	h1 {
+		border-bottom: solid 2px $opaque-white;
+		color: white;
+		height: 3em;
+		margin: 0;
+		padding: 14px 16px;
+	}
+	div {
+		padding: 0 $content-padding-x 24px $content-padding-x;
+	}
 }
 .modal-show {
-  display: block;
+	display: block;
 }
 .modal-hide {
-  display: none;
+	display: none;
 }
 .modal-close-button {
-  border: none;
-  background-color: blue;
-  color: rgb(46, 46, 46);
-  cursor: pointer;
-  font-size: 1.3rem;
-  position: fixed;
-  right: $content-padding-x + 8px;
-  top: 12px;
+	@include fluid-type(font-size, 300px, 1200px, 14px, 36px);
+	@include fluid-type(right, 300px, 1200px, 6px, 14px);
+	@include fluid-type(top, 300px, 1200px, 6px, 14px);
+
+	background-color: transparent;
+	border: none;
+	color: white;
+	cursor: pointer;
+	position: fixed;
+}
+.info-content {
+	p {
+		padding-top: 1em;
+		text-align: justify;
+	}
+	ul li {
+		list-style-position: outside;
+		margin-left: 2em;
+	}
 }

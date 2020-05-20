@@ -7,65 +7,42 @@ function InfoModal(props) {
 	return (
 		<div className={modalShowHideClass}>
 			<section className="modal-window">
-				<h1>App Info</h1>
-				<div>
-					<h3>Random Quote Generator</h3>
-					<ul>
-						<li>
-							A simple REACT web app based on{' '}
-							<a href="https://www.freecodecamp.org/ptrchoi" target="_blank">
-								FreeCodeCamp.org's
-							</a>{' '}
-							project curriculum, demonstrating use of front end libraries for a random quote generator (
-							<a
-								href="https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-random-quote-machine"
-								target="_blank"
-							>
-								requirements and user stories here
-							</a>
-							). Original source on{' '}
-							<a href="https://github.com/ptrchoi/FCC-New-Quote-Machine" target="_blank">
-								github
-							</a>
-							.
-						</li>
-						<li>Technologies:</li>
+				<h1>About</h1>
+				<div className="info-content">
+					<p>
+						A clean mobile + desktop React app that generates inspirational quotes over fullscreen,
+						high-resolution images. Fully responsive, fluidly scaling images and text, with content pulling
+						from several popular API's. Users can choose from a variety of photo themes, pause on the
+						current content (ie. for a screengrab), or tweet out the current quote.
+					</p>
+					<p>
+						<h4>Technologies:</h4>
 						<ul>
 							<li>Javascript | React | jQuery | SCSS | Firebase | Node.js | Parcel</li>
 						</ul>
-						<li>Features and UX:</li>
+					</p>
+					<p>
+						<h4>Features and UX:</h4>
 						<ul>
+							<li>Quotes generated from the Forismatic API.</li>
+							<li>Quote positioning is also dynamcially randomized within the viewport.</li>
 							<li>
-								Random quotes generated from the{' '}
-								<a href="https://forismatic.com/en/api/" target="_blank">
-									Forismatic
-								</a>{' '}
-								API.
+								Responsive design with full-screen, fluid-scaling background images and responsive
+								font-size scaling (ie. no harsh breakpoints), with transitional animations between
+								content cycling.
 							</li>
-							<li>Viewport positioning for quotes is also randomized within a target container.</li>
-							<li>
-								Responsive design with full-screen scaling background images and responsive font-size
-								scaling, with transitional animation.
-							</li>
-							<li>
-								Random (theme filtered) background images generated from{' '}
-								<a href="https://unsplash.com/" target="_blank">
-									Unsplash's
-								</a>{' '}
-								image collections (non-API method).
-							</li>
-							<li>Quote-sharing via tweet and application information modal overlay.</li>
-							<li>Animated buttons with subdued transparency, highlighting when hovered.</li>
+							<li>Themed images generated from Unsplash's image collections.</li>
+							<li>Animated buttons, tweet sharing, information modal overlay.</li>
 							<li>
 								Code demonstrates functional programming with higher-order functions, advanced ES6
 								features, and modular programming with React and SCSS components.
 							</li>
 						</ul>
-					</ul>
+					</p>
 				</div>
 				{children}
 				<button className="modal-close-button" onClick={handleClose}>
-					<i className="fas fa-times" />
+					<i className="fas fa-times-circle" />
 				</button>
 			</section>
 		</div>
