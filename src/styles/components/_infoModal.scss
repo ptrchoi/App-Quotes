@@ -49,12 +49,13 @@
 	position: fixed;
 }
 .info-content {
-	p {
+	ul {
 		padding-top: 1em;
 		text-align: justify;
-	}
-	ul li {
-		list-style-position: outside;
-		margin-left: 2em;
+		li {
+			list-style-position: outside;
+			padding-top: 1em;
+			margin-left: 2em;
+		}
 	}
 }

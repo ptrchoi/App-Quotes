@@ -18,6 +18,7 @@ class QuoteButtons extends React.Component {
 		this.hideInfo = this.hideInfo.bind(this);
 		this.themeChange = this.themeChange.bind(this);
 		this.playPause = this.playPause.bind(this);
+		this.nextQuote = this.nextQuote.bind(this);
 		this.screenshot = this.screenshot.bind(this);
 	}
 	showInfo() {
@@ -58,6 +59,9 @@ class QuoteButtons extends React.Component {
 
 		this.props.onPlayPause(!paused);
 	}
+	nextQuote() {
+		this.props.onNextQuote();
+	}
 	screenshot() {
 		let { paused } = this.props;
 		let { screenshotPaused } = this.state;
@@ -92,6 +96,32 @@ class QuoteButtons extends React.Component {
 		return (
 			<div className="buttonsContainer">
 				<div className="buttonWrapper">
+					<button
+						id="playBtn"
+						className="appButton"
+						onClick={(e) => {
+							this.playPause(e, this.props.paused);
+						}}
+					>
+						<i id="pausePlayIcon" class="fas fa-pause" />
+					</button>
+				</div>
+				<div className="buttonWrapper">
+					<button id="nextBtn" className="appButton" onClick={this.nextQuote}>
+						<i id="pausePlayIcon" class="fas fa-forward" />
+					</button>
+				</div>
+				<div className="buttonWrapper">
+					<button id="screenshotBtn" className="appButton " onClick={this.screenshot}>
+						<i className="fa fa-copy" />
+					</button>
+				</div>
+				<div className="buttonWrapper">
+					<button id="app-info" className="appButton" onClick={this.showInfo}>
+						<i className="fa fa-info" />
+					</button>
+				</div>
+				<div className="buttonWrapper">
 					<select
 						name="themes"
 						id="themes"
@@ -117,27 +147,6 @@ class QuoteButtons extends React.Component {
 						<option value="experimental">Experimental</option>
 						<option value="editorial">Unsplash</option>
 					</select>
-				</div>
-				<div className="buttonWrapper">
-					<button
-						id="playBtn"
-						className="appButton"
-						onClick={(e) => {
-							this.playPause(e, this.props.paused);
-						}}
-					>
-						<i id="pausePlayIcon" class="fas fa-pause" />
-					</button>
-				</div>
-				<div className="buttonWrapper">
-					<button id="screenshotBtn" className="appButton " onClick={this.screenshot}>
-						<i className="fas fa-camera" />
-					</button>
-				</div>
-				<div className="buttonWrapper">
-					<button id="app-info" className="appButton" onClick={this.showInfo}>
-						<i className="fas fa-info" />
-					</button>
 				</div>
 				<InfoModal show={this.state.showInfo} handleClose={this.hideInfo} />
 			</div>

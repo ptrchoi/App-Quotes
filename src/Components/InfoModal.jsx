@@ -9,13 +9,11 @@ function InfoModal(props) {
 			<section className="modal-window">
 				<h1>About</h1>
 				<div className="info-content">
-					<p>
-						<ul>
-							<li>Quotes from Forismatic.</li>
-							<li>Images from Unsplash.</li>
-							<li>Designed and Developed by Peter Choi (ptrchoi.com)</li>
-						</ul>
-					</p>
+					<ul>
+						<li>Quotes from Forismatic.</li>
+						<li>Images from Unsplash.</li>
+						<li>Designed and Developed by Peter Choi (ptrchoi.com)</li>
+					</ul>
 				</div>
 				{children}
 				<button className="modal-close-button" onClick={handleClose}>

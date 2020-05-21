@@ -26,7 +26,7 @@ class App extends React.Component {
 			pausedReset: false
 		};
 
-		this.resetApp = this.resetApp.bind(this);
+		this.reset = this.reset.bind(this);
 		this.startInterval = this.startInterval.bind(this);
 		this.getNewQuote = this.getNewQuote.bind(this);
 		this.handleQuoteData = this.handleQuoteData.bind(this);
@@ -35,11 +35,12 @@ class App extends React.Component {
 		this.displayImage = this.displayImage.bind(this);
 		this.handleThemeChange = this.handleThemeChange.bind(this);
 		this.handlePlayPause = this.handlePlayPause.bind(this);
+		this.handleNextQuote = this.handleNextQuote.bind(this);
 	}
 	componentDidMount() {
-		this.resetApp();
+		this.reset();
 	}
-	resetApp() {
+	reset() {
 		// Load an initial quote/background
 		this.getNewQuote();
 		this.preloadImage();
@@ -169,14 +170,14 @@ class App extends React.Component {
 		});
 
 		// If not paused, reset now
-		if (!pausedReset) this.resetApp();
+		if (!pausedReset) this.reset();
 	}
 	handlePlayPause(pause) {
 		let { pausedReset } = this.state;
 
 		// If a reset was already paused, and user unpaused - do the reset now and clear the pausedReset state
 		if (!pause && pausedReset) {
-			this.resetApp();
+			this.reset();
 			pausedReset = false;
 		}
 
@@ -184,6 +185,9 @@ class App extends React.Component {
 			paused: pause,
 			pausedReset: pausedReset
 		});
+	}
+	handleNextQuote() {
+		this.reset();
 	}
 	render() {
 		return (
@@ -195,6 +199,7 @@ class App extends React.Component {
 					onThemeChange={this.handleThemeChange}
 					paused={this.state.paused}
 					onPlayPause={this.handlePlayPause}
+					onNextQuote={this.handleNextQuote}
 				/>
 			</div>
 		);
