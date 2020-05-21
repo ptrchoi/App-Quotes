@@ -1,14 +1,29 @@
-.buttonsContainer {
-	display: flex;
-	justify-content: center;
-	margin-top: 85vh;
-	position: absolute;
-	width: 100%;
-	z-index: $button-layer;
+.btn-1 {
+	grid-area: btn1;
 }
-.buttonWrapper {
-	@include fluid-type(margin-left, 300px, 1200px, 6px, 24px);
-	@include fluid-type(margin-right, 300px, 1200px, 6px, 24px);
+.btn-2 {
+	grid-area: btn2;
+}
+.btn-3 {
+	grid-area: btn3;
+}
+.btn-4 {
+	grid-area: btn4;
+}
+.btn-5 {
+	grid-area: dropList;
+}
+.buttonsContainer {
+	@include fluid-type(grid-gap, 300px, 1200px, 20px, 50px);
+
+	display: grid;
+	grid-template-columns: 4fr 1fr 1fr 1fr 1fr 4fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas: ". btn1 btn2 btn3 btn4 ." ". dropList dropList dropList dropList .";
+	justify-items: center;
+	margin-top: 78vh;
+	position: relative;
+	z-index: $button-layer;
 }
 .appButton {
 	@include fluid-type(font-size, 300px, 1200px, 8px, 24px);
@@ -52,6 +67,15 @@
 
 @media screen and (orientation: landscape) {
 	.buttonsContainer {
+		grid-template-columns: 10fr 1fr 1fr 1fr 1fr 1fr 3fr 10fr;
+		grid-template-rows: 1fr;
+		grid-template-areas: ". btn1 btn2 btn3 btn4 . dropList .";
+
 		margin-top: 80vh;
+	}
+	.appButton {
+		@include fluid-type(font-size, 300px, 1200px, 8px, 20px);
+		@include fluid-type(height, 300px, 1200px, 20px, 36px);
+		@include fluid-type(width, 300px, 1200px, 20px, 36px);
 	}
 }

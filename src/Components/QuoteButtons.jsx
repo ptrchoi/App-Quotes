@@ -95,7 +95,7 @@ class QuoteButtons extends React.Component {
 	render(props) {
 		return (
 			<div className="buttonsContainer">
-				<div className="buttonWrapper">
+				<div className="buttonWrapper btn-1">
 					<button
 						id="playBtn"
 						className="appButton"
@@ -106,22 +106,22 @@ class QuoteButtons extends React.Component {
 						<i id="pausePlayIcon" class="fas fa-pause" />
 					</button>
 				</div>
-				<div className="buttonWrapper">
+				<div className="buttonWrapper btn-2">
 					<button id="nextBtn" className="appButton" onClick={this.nextQuote}>
 						<i id="pausePlayIcon" class="fas fa-forward" />
 					</button>
 				</div>
-				<div className="buttonWrapper">
+				<div className="buttonWrapper btn-3">
 					<button id="screenshotBtn" className="appButton " onClick={this.screenshot}>
 						<i className="fa fa-copy" />
 					</button>
 				</div>
-				<div className="buttonWrapper">
+				<div className="buttonWrapper btn-4">
 					<button id="app-info" className="appButton" onClick={this.showInfo}>
 						<i className="fa fa-info" />
 					</button>
 				</div>
-				<div className="buttonWrapper">
+				<div className="buttonWrapper btn-5">
 					<select
 						name="themes"
 						id="themes"
