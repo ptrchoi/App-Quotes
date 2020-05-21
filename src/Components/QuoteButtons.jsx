@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import html2canvas from 'html2canvas';
 
 import InfoModal from './InfoModal';
 
@@ -16,6 +17,7 @@ class QuoteButtons extends React.Component {
 		this.hideInfo = this.hideInfo.bind(this);
 		this.themeChange = this.themeChange.bind(this);
 		this.playPause = this.playPause.bind(this);
+		this.screenshot = this.screenshot.bind(this);
 	}
 	showInfo() {
 		let { paused, modalPaused } = this.props;
@@ -53,6 +55,14 @@ class QuoteButtons extends React.Component {
 		}
 
 		this.props.onPlayPause(!paused);
+	}
+	screenshot() {
+		html2canvas(document.body, { useCORS: true }).then(function(canvas) {
+			const data = canvas.toDataURL('image/png');
+
+			let newWindow = window.open('about:blank', 'image from canvas');
+			newWindow.document.write("<img src='" + data + "' alt='from canvas'/>");
+		});
 	}
 	render(props) {
 		return (
@@ -96,11 +106,9 @@ class QuoteButtons extends React.Component {
 					</button>
 				</div>
 				<div className="buttonWrapper">
-					<a id="tweet-quote" href="https://twitter.com/intent/tweet" target="_blank">
-						<button className="appButton ">
-							<i className="fab fa-twitter" />
-						</button>
-					</a>
+					<button id="screenshotBtn" className="appButton " onClick={this.screenshot}>
+						<i className="fas fa-camera" />
+					</button>
 				</div>
 				<div className="buttonWrapper">
 					<button id="app-info" className="appButton" onClick={this.showInfo}>
