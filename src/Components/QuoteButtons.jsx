@@ -10,7 +10,8 @@ class QuoteButtons extends React.Component {
 
 		this.state = {
 			showInfo: false,
-			modalPaused: false
+			modalPaused: false,
+			screenshotPaused: false
 		};
 
 		this.showInfo = this.showInfo.bind(this);
@@ -20,7 +21,8 @@ class QuoteButtons extends React.Component {
 		this.screenshot = this.screenshot.bind(this);
 	}
 	showInfo() {
-		let { paused, modalPaused } = this.props;
+		let { paused } = this.props;
+		let { modalPaused } = this.state;
 		// Pause on info modal if not already paused. Update state - infoModal triggered pause to be able to unpause.
 		if (paused === false) {
 			$('#playBtn').click();
@@ -57,12 +59,34 @@ class QuoteButtons extends React.Component {
 		this.props.onPlayPause(!paused);
 	}
 	screenshot() {
-		html2canvas(document.body, { useCORS: true }).then(function(canvas) {
-			const data = canvas.toDataURL('image/png');
+		let { paused } = this.props;
+		let { screenshotPaused } = this.state;
 
-			let newWindow = window.open('about:blank', 'image from canvas');
-			newWindow.document.write("<img src='" + data + "' alt='from canvas'/>");
-		});
+		// Pause on screenshot if not already paused. Update state - screenshot triggered pause to be able to unpause.
+		if (paused === false) {
+			$('#playBtn').click();
+			this.setState({
+				screenshotPaused: true
+			});
+		}
+
+		//
+		setTimeout(() => {
+			html2canvas($('.textWrapper')[0], {
+				backgroundColor: 'rgba(128, 128, 128, 1)'
+			}).then(function(canvas) {
+				const data = canvas.toDataURL('image/png');
+
+				let newWindow = window.open('about:blank', 'image from canvas');
+				newWindow.document.write("<img src='" + data + "' alt='from canvas'/>");
+			});
+			if (this.state.screenshotPaused === true) {
+				$('#playBtn').click();
+				this.setState({
+					screenshotPaused: false
+				});
+			}
+		}, 500);
 	}
 	render(props) {
 		return (

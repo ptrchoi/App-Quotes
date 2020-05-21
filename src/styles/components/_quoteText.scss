@@ -1,12 +1,9 @@
 .textWrapper {
 	display: none;
-	padding: 20px;
+	padding: 8px;
 	position: absolute;
 	z-index: $quote-layer;
-
-	height: 20vw;
 	width: 90vw;
-	max-height: 225px;
 	max-width: 900px;
 }
 blockquote {
@@ -51,9 +48,10 @@ cite:before {
 
 @media screen and (orientation: landscape) {
 	.textWrapper {
-		padding: 2px;
-		height: 15vw;
+		// padding: 2px;
+		// height: 15vw;
 		width: 80vw;
+		// max-height: 225px;
 	}
 	blockquote {
 		@include fluid-type(font-size, 300px, 1200px, 10px, 24px);
