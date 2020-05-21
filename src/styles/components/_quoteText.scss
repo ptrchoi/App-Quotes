@@ -1,10 +1,13 @@
 .textWrapper {
 	display: none;
+	left: 50%;
+	max-width: 900px;
 	padding: 8px;
 	position: absolute;
-	z-index: $quote-layer;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	width: 90vw;
-	max-width: 900px;
+	z-index: $quote-layer;
 }
 blockquote {
 	@include fluid-type(font-size, 300px, 1200px, 12px, 36px);
