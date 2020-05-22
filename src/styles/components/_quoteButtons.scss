@@ -33,21 +33,21 @@
 	max-width: 60px;
 
 	background-color: $transparent-gray;
-	border: solid 2px $opaque-white;
-	color: $opaque-white;
+	border: solid 2px $transparent-white;
+	color: $transparent-white;
 	outline: none;
 	text-align: center;
 	transition: ease-in-out $transparency-transition;
 	&:hover {
 		background-color: $opaque-gray;
-		border: solid 1px $opaque-white;
-		color: $opaque-white;
+		border: solid 1px $transparent-white;
+		color: $transparent-white;
 		cursor: pointer;
 		transition: ease-in-out $transparency-transition;
 	}
 }
 .selectedButton {
-	background-color: $transparent-white;
+	background-color: $opaque-white;
 	border: solid 2px $opaque-blue;
 	color: $opaque-blue;
 
@@ -64,7 +64,6 @@
 	font-weight: bolder;
 	text-shadow: 1px 1px 3px black;
 }
-
 @media screen and (orientation: landscape) {
 	.buttonsContainer {
 		grid-template-columns: 10fr 1fr 1fr 1fr 1fr 1fr 3fr 10fr;

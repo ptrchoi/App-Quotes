@@ -10,9 +10,25 @@ function InfoModal(props) {
 				<h1>About</h1>
 				<div className="info-content">
 					<ul>
-						<li>Quotes from Forismatic.</li>
-						<li>Images from Unsplash.</li>
-						<li>Designed and Developed by Peter Choi (ptrchoi.com)</li>
+						<li>
+							Quotes provided by {' '}
+							<a href="https://forismatic.com/en/" target="_blank">
+								Forismatic
+							</a>{' '}
+						</li>
+						<li>
+							Images provided by {' '}
+							<a href="https://unsplash.com/" target="_blank">
+								Unsplash
+							</a>{' '}
+						</li>
+						<li>
+							Designed and Developed by Peter Choi ({' '}
+							<a href="https://ptrchoi.com/" target="_blank">
+								ptrchoi.com
+							</a>{' '}
+							)
+						</li>
 					</ul>
 				</div>
 				{children}

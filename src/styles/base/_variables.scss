@@ -14,7 +14,7 @@ $transparency-transition: 0.25s;
 //Button Colors
 $mid-white: rgba(255, 255, 255, $mid-transparency);
 $opaque-white: rgba(255, 255, 255, 1);
-$transparent-white: rgba(255, 255, 255, $high-transparency);
+$transparent-white: rgba(255, 255, 255, .8);
 $opaque-gray: rgba(128, 128, 128, 1);
 $transparent-gray: rgba(128, 128, 128, $high-transparency);
 $opaque-blue: rgba(0, 0, 182, 1);

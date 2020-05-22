@@ -77,10 +77,10 @@ class QuoteButtons extends React.Component {
 		//
 		setTimeout(() => {
 			html2canvas($('.textWrapper')[0], {
-				backgroundColor: 'rgba(128, 128, 128, 1)'
+				backgroundColor: 'rgba(128, 128, 128, 1)',
+				scale: 0.8
 			}).then(function(canvas) {
-				const data = canvas.toDataURL('image/png');
-
+				let data = canvas.toDataURL('image/png');
 				let newWindow = window.open('about:blank', 'image from canvas');
 				newWindow.document.write("<img src='" + data + "' alt='from canvas'/>");
 			});
@@ -129,8 +129,8 @@ class QuoteButtons extends React.Component {
 						onChange={this.themeChange}
 						defaultValue={'heading'}
 					>
-						<option value="heading" disabled>
-							Unsplash Themes
+						<option value="heading" id="listLabel" disabled>
+							Image Themes
 						</option>
 						<option value="weather+scenic">Weather</option>
 						<option value="beach+tropical">Beaches</option>

@@ -16,7 +16,7 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			quote: '',
+			quote: '      ...loading',
 			author: '',
 			imageUrl: '',
 			theme: 'weather+scenic', // Default value to match dropdown list in QuoteButtons component
@@ -192,9 +192,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div id="quote-box" className="container">
-				<div className="panel-1 bg-img-panel" />
+				<div className="panel-1 bg-img-panel">
+					<QuoteText text={this.state.quote} name={this.state.author} />
+				</div>
 				<div className="panel-2 bg-img-panel" />
-				<QuoteText text={this.state.quote} name={this.state.author} />
 				<QuoteButtons
 					onThemeChange={this.handleThemeChange}
 					paused={this.state.paused}
