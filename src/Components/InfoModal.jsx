@@ -23,11 +23,10 @@ function InfoModal(props) {
 							</a>{' '}
 						</li>
 						<li>
-							Designed and Developed by Peter Choi ({' '}
+							Designed and Developed by {' '}
 							<a href="https://ptrchoi.com/" target="_blank">
-								ptrchoi.com
+								Peter Choi
 							</a>{' '}
-							)
 						</li>
 					</ul>
 				</div>
