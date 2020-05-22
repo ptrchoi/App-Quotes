@@ -10,6 +10,17 @@
 	display: none;
 }
 .textWrapper {
+	border-style: solid;
+	border-width: 1px;
+	border-image: linear-gradient(
+			to left,
+			rgba(255, 255, 255, 0.01) 1%,
+			rgba(255, 255, 255, 0.2) 25%,
+			rgba(255, 255, 255, 0.8) 50%,
+			rgba(255, 255, 255, 0.2) 75%,
+			rgba(255, 255, 255, 0.01) 100%
+		)
+		100% 0 100% 0/3px 0 3px 0 stretch;
 	height: auto;
 	padding: 40px 20px;
 	max-width: 90vw;
