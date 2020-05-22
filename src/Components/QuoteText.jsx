@@ -1,14 +1,20 @@
 import React from 'react';
 
 function QuoteText(props) {
+	let { text, name } = props;
+	let classList = 'textContainer';
+
+	// Test for first run, hide entire text container so empty blockquote symbols don't display
+	if (text === 'loading') classList = 'hidden';
+
 	return (
-		<div className="textContainer">
+		<div className={classList}>
 			<div className="textWrapper">
 				<div id="text" className="quoteText">
-					<blockquote>{`${props.text}`}</blockquote>
+					<blockquote>{text}</blockquote>
 				</div>
 				<div id="author" className="authorText">
-					<cite>{props.name}</cite>
+					<cite>{name}</cite>
 				</div>
 			</div>
 		</div>

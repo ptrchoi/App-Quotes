@@ -6,6 +6,7 @@ import QuoteText from './QuoteText';
 import QuoteButtons from './QuoteButtons';
 
 //Constants
+const FIRST_RUN_TEXT = 'loading';
 const DISPLAY_TIME = 10; //s
 const QUOTE_FADE_IN_TIME = 3000; //ms
 const QUOTE_FADE_OUT_TIME = 1500; //ms
@@ -16,12 +17,12 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			quote: '      ...loading',
+			quote: FIRST_RUN_TEXT,
 			author: '',
 			imageUrl: '',
 			theme: 'weather+scenic', // Default value to match dropdown list in QuoteButtons component
 			interval: null,
-			displayTimer: 0, // In secs
+			displayTimer: DISPLAY_TIME, // In secs
 			paused: false,
 			pausedReset: false
 		};
@@ -41,17 +42,19 @@ class App extends React.Component {
 		this.reset();
 	}
 	reset() {
-		// Load an initial quote/background
-		this.getNewQuote();
-		this.preloadImage();
+		// If not the first run, clear out the previous interval and reset timer
+		if (this.state.interval !== null) {
+			clearInterval(this.state.interval);
 
-		// If not the first run, clear out the previous interval
-		if (this.state.interval !== null) clearInterval(this.state.interval);
+			// preload next quote/background
+			this.getNewQuote();
+			this.preloadImage();
 
-		// Reset the display timer
-		this.setState({
-			displayTimer: 0
-		});
+			// Reset the display timer
+			this.setState({
+				displayTimer: 0
+			});
+		}
 
 		// Start the interval timer
 		this.startInterval();
@@ -106,10 +109,15 @@ class App extends React.Component {
 		this.displayQuote(newQuote.quote, author);
 	}
 	displayQuote(quote, author) {
+		let fadeTimer = QUOTE_FADE_OUT_TIME;
+
+		// If first run - skip fade out time, load immediately
+		if (this.state.quote === FIRST_RUN_TEXT) fadeTimer = 0;
+
 		// Preload image into back panel for seamless transition
 		this.preloadImage();
 
-		$('.textWrapper').fadeOut(QUOTE_FADE_OUT_TIME, () => {
+		$('.textWrapper').fadeOut(fadeTimer, () => {
 			this.displayImage();
 			this.setState({
 				quote: `${quote}`,

@@ -6,6 +6,9 @@
 	align-items: center;
 	z-index: $quote-layer;
 }
+.hidden {
+	display: none;
+}
 .textWrapper {
 	height: auto;
 	padding: 40px 20px;
