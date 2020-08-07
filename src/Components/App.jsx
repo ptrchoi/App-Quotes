@@ -85,7 +85,7 @@ class App extends React.Component {
 		});
 	}
 	getNewQuote() {
-		let url = 'https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?';
+		let url = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?';
 
 		$.getJSON(
 			url,

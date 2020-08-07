@@ -32,8 +32,8 @@ blockquote {
 	font-family: Georgia, serif;
 	font-style: italic;
 	text-align: start;
-	text-shadow: 2px 2px 4px rgb(97, 97, 97), 2px 2px 4px black, 2px 2px 4px black, 2px 2px 4px black, 2px 2px 4px black,
-		2px 2px 8px rgb(97, 97, 97);
+	text-shadow: 2px 2px 4px rgba(97, 97, 97, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.8),
+		2px 2px 4px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.8), 2px 2px 8px rgba(97, 97, 97, 0.8);
 }
 blockquote:before {
 	@include fluid-type(font-size, 300px, 1200px, 32px, 96px);
@@ -56,7 +56,8 @@ cite {
 	color: $opaque-white;
 	font-style: normal;
 	margin-left: 45%;
-	text-shadow: 2px 2px 4px rgb(97, 97, 97), 2px 2px 4px black, 2px 2px 4px black, 2px 2px 4px black, 2px 2px 4px black;
+	text-shadow: 2px 2px 4px rgba(97, 97, 97, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.8),
+		2px 2px 4px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.8), 2px 2px 8px rgba(97, 97, 97, 0.8);
 }
 cite:before {
 	color: $quotation-symbols;

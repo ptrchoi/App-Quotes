@@ -103,12 +103,12 @@ class QuoteButtons extends React.Component {
 							this.playPause(e, this.props.paused);
 						}}
 					>
-						<i id="pausePlayIcon" class="fas fa-pause" />
+						<i id="pausePlayIcon" className="fas fa-pause" />
 					</button>
 				</div>
 				<div className="buttonWrapper btn-2">
 					<button id="nextBtn" className="appButton" onClick={this.nextQuote}>
-						<i id="pausePlayIcon" class="fas fa-forward" />
+						<i id="pausePlayIcon" className="fas fa-forward" />
 					</button>
 				</div>
 				<div className="buttonWrapper btn-3">
