@@ -12,7 +12,7 @@
 	@include fluid-type(width, 300px, 1200px, 250px, 1000px);
 	max-width: 1000px;
 
-	background-color: $transparent-gray;
+	background-color: rgba(128, 128, 128, .8);
 	border: solid 2px $opaque-white;
 	color: $opaque-white;
 	font-family: Arial, Helvetica, sans-serif;
